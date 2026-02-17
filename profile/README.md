@@ -4,22 +4,22 @@ Tools for engineers who work with AI. Open source. Quality-focused.
 
 ## About
 
-Punt Labs builds software that keeps engineers in flow — Claude Code plugins, MCP servers, and companion apps that extend AI-assisted workflows without forcing a context switch. Our name comes from punting in Oxford: a casual way to give something a go.
+Punt Labs builds software that keeps engineers in flow. Most of our tools work two ways: as standalone CLIs and as plugins or MCP servers inside Claude Code and Claude Desktop. Use them from the terminal or let your AI assistant use them for you. Our name comes from punting in Oxford: a casual way to give something a go.
 
 ## Projects
 
-### Claude Code Plugins
+### Product Planning
 
-- [**PR/FAQ**](https://github.com/punt-labs/prfaq) — Amazon's Working Backwards process in the terminal. Generate, review, stress-test, and iterate on product discovery documents with eight specialized agents, simulated review meetings, and compiled PDF output.
-- [**Z Spec**](https://github.com/jmf-pobox/claude-z-spec-plugin) — Create, validate, and test formal Z specifications for stateful systems. Guided setup for fuzz and ProB, with type-checking and model-checking from Claude Code.
+- [**PR/FAQ**](https://github.com/punt-labs/prfaq) `Claude Code` — Amazon's Working Backwards process in the terminal. Generate, review, stress-test, and iterate on product discovery documents with eight specialized agents, simulated review meetings, and compiled PDF output.
 
-### MCP Servers
+### Development
 
-- [**Biff**](https://github.com/punt-labs/biff) — Team communication for engineers who never leave the terminal. Resurrects the BSD Unix communication vocabulary (`who`, `finger`, `write`, `plan`) as MCP-native slash commands over a NATS relay. Humans and agents show up side by side.
-- [**Quarry**](https://github.com/jmf-pobox/quarry-mcp) — Local semantic search across your documents. Index PDFs, images, spreadsheets, source code, and 30+ formats. Search by meaning, not keywords. Runs entirely offline — no API keys, no cloud accounts.
-- [**LangLearn TTS**](https://github.com/jmf-pobox/langlearn-tts-mcp) — Gives Claude the ability to speak. Pronounce words, generate audio flashcards, or run full language lessons with audio in 70+ languages. Ships with 28 AI tutor personas across seven languages and four levels.
+- [**Z Spec**](https://github.com/jmf-pobox/claude-z-spec-plugin) `Claude Code` — Create, validate, and test formal Z specifications for stateful systems. Guided setup for fuzz and ProB, with type-checking and model-checking.
+- [**Biff**](https://github.com/punt-labs/biff) `CLI` `Claude Code` — Team communication for engineers who never leave the terminal. Resurrects the BSD Unix communication vocabulary (`who`, `finger`, `write`, `plan`) as both CLI commands and MCP-native slash commands over a NATS relay. Humans and agents show up side by side.
+- [**Quarry**](https://github.com/jmf-pobox/quarry-mcp) `CLI` `Claude Code` `Claude Desktop` `macOS` — Local semantic search across your documents. Index PDFs, images, spreadsheets, source code, and 30+ formats. Search by meaning, not keywords. Works as a standalone CLI, an MCP server, or through the [menu bar app](https://github.com/jmf-pobox/quarry-menubar). Runs entirely offline.
 
-### Native Apps
+### Applications
 
-- [**Quarry Menu Bar**](https://github.com/jmf-pobox/quarry-menubar) — macOS menu bar companion for Quarry. Search your indexed documents from anywhere with a keyboard shortcut. Pure SwiftUI, no dependencies.
-- [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) — iOS Morse code trainer using the Koch method. Receive/send training, QSO simulation, spaced repetition, and vocabulary practice for amateur radio operators. Formally specified using [Z Spec](https://github.com/jmf-pobox/claude-z-spec-plugin).
+- [**Dungeon**](https://github.com/punt-labs/dungeon) `Claude Code` — Text adventure engine where Claude is the game master. No code runs, only prompts. Natural language commands, persistent state, and bundled adventure scripts.
+- [**LangLearn TTS**](https://github.com/jmf-pobox/langlearn-tts-mcp) `CLI` `Claude Desktop` — Gives Claude the ability to speak. Pronounce words, generate audio flashcards, or run full language lessons with audio in 70+ languages. Works as a standalone CLI or an MCP server. Ships with 28 AI tutor personas across seven languages and four levels.
+- [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) `iOS` — Morse code trainer using the Koch method. Receive/send training, QSO simulation, spaced repetition, and vocabulary practice for amateur radio operators. Formally specified using [Z Spec](https://github.com/jmf-pobox/claude-z-spec-plugin).
