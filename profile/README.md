@@ -6,6 +6,8 @@ Tools for engineers who work with AI. Open source. Quality-focused.
 
 Punt Labs builds software that keeps engineers in flow. Most of our tools work two ways: as standalone CLIs and as plugins or MCP servers inside Claude Code and Claude Desktop. Use them from the terminal or let your AI assistant use them for you. Our name comes from punting in Oxford: a casual way to give something a go.
 
+Our design standards and project guide live in [punt-kit](https://github.com/punt-labs/punt-kit).
+
 ## Projects
 
 ### Product Planning
