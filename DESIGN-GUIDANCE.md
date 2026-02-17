@@ -218,9 +218,20 @@ Projects follow **semver** (`major.minor.patch`).
 
 ## 9. Naming Conventions
 
+### General rule
+
+The project name is the CLI command name. That same name is used for the GitHub repo, the PyPI package, and the local directory. Do **not** add a `-mcp` suffix — it implies the project is only an MCP server when most of our tools are dual CLI+MCP.
+
 | Component | Convention | Examples |
 |-----------|-----------|---------|
-| PyPI package | `<name>-mcp` when it's an MCP server | `biff-mcp`, `quarry-mcp`, `langlearn-tts` |
+| GitHub repo | `<org>/<name>` | `punt-labs/biff`, `punt-labs/quarry` |
+| PyPI package | `<name>` (matches CLI) | `biff`, `quarry`, `langlearn-tts` |
+| MCP server only (no CLI) | `<name>-mcp` | — (no current examples; avoid this pattern) |
+
+### Other components
+
+| Component | Convention | Examples |
+|-----------|-----------|---------|
 | CLI command | Short, lowercase, no prefix | `biff`, `quarry`, `langlearn-tts` |
 | Slash command | `/<name>` or `/<name>:<subcommand>` | `/prfaq`, `/prfaq:review`, `/z check` |
 | Plugin directory | Match the plugin name | `plugins/prfaq/`, `plugins/z-spec/` |
@@ -228,13 +239,95 @@ Projects follow **semver** (`major.minor.patch`).
 
 ---
 
-## 10. Audit Checklist
+## 10. CLI Standards
+
+Every Python project with a CLI must follow these conventions. **beads** (`bd`) is the reference implementation.
+
+### Structure
+
+- Framework: **typer** + **rich**
+- Entry point: single command group (`app = typer.Typer()`)
+- Subcommands: imperative verbs (`install`, `search`, `doctor`, `serve`)
+- Help text: one-line description on the Typer app; per-command docstrings
+
+### Required subcommands
+
+Every CLI must implement:
+
+| Subcommand | Purpose |
+|-----------|---------|
+| `install` | Configure the tool for the current environment (MCP registration, data directories, models) |
+| `doctor` | Check installation health — pass/fail per dependency |
+| `version` | Print the version |
+| `serve` | Start the MCP server (if the project has one) |
+
+### Machine-readable output (`--json`)
+
+Every CLI must support a `--json` global flag that switches output to JSON. This enables agentic integration — scripts, CI pipelines, and other tools can parse the output programmatically.
+
+Rules:
+- `--json` is a **global flag**, not per-subcommand
+- When `--json` is set, all output is valid JSON written to stdout
+- Human-readable messages (progress, decoration) go to stderr or are suppressed
+- Errors are JSON objects with at minimum `{"error": "<message>"}`
+- List commands return JSON arrays; detail commands return JSON objects
+
+Pattern: `bd --json list`, `bd --json show <id>`.
+
+### Shell completion
+
+Every CLI should support shell completion via typer's built-in `--install-completion` and `--show-completion`.
+
+---
+
+## 11. Installation Scope
+
+MCP servers and tools have different installation scopes. Choosing the wrong scope leaks credentials, creates confusion, or fails silently.
+
+### Principles
+
+1. **MCP servers install per-project by default.** Use `claude mcp add <name>` (no `--scope` flag) which defaults to local/project scope. This keeps API keys, relay tokens, and server configurations scoped to the project that needs them.
+
+2. **Global installation is opt-in.** Use `claude mcp add --scope user <name>` only when the tool is genuinely global (e.g., a utility with no per-project configuration). The user must explicitly choose global scope.
+
+3. **Per-project activation via `init`.** Projects with per-repo configuration (team rosters, relay URLs, database names, API keys) should have an `init` subcommand that creates the repo-level config file. This is distinct from `install` (which sets up the tool globally).
+
+| Subcommand | Scope | What it does |
+|-----------|-------|-------------|
+| `install` | Global (one-time) | Download models, register MCP server, install plugin, verify dependencies |
+| `init` | Per-repo | Create the repo-level config file (e.g., `.biff`, `.quarry.toml`), prompt for project-specific settings |
+
+### Per-repo config files
+
+Projects with per-repo state should use a dotfile at the git root:
+
+| Project | Config File | Contents |
+|---------|------------|----------|
+| Biff | `.biff` | Team roster, relay URL, auth credentials |
+| Quarry | `.quarry.toml` (proposed) | Database name, registered directories, collection defaults |
+| Beads | `.beads/` | Issue database, config |
+
+The config file should be committed to git (minus secrets). Secrets belong in environment variables or a `.local` file that is gitignored.
+
+### API keys and secrets
+
+- **Never embed API keys in MCP config files** (`claude_desktop_config.json`, `.mcp.json`). Use environment variables.
+- **Never commit secrets to git.** Use `.env` files (gitignored) or system keychain.
+- `doctor` should verify that required secrets are available without printing them.
+
+---
+
+## 12. Audit Checklist
 
 Use this checklist to audit a project for compliance:
 
 - [ ] **Install path exists** — `curl | bash`, PyPI, `.mcpb`, or documented build steps
 - [ ] **Doctor command exists** — if the project has external dependencies
 - [ ] **CLI available** — for deterministic operations (exempt: purely AI-driven projects)
+- [ ] **CLI supports `--json`** — global flag for machine-readable output
+- [ ] **PyPI name matches CLI name** — no `-mcp` suffix on dual CLI+MCP tools
+- [ ] **MCP scope is per-project** — `claude mcp add` without `--scope user` unless justified
+- [ ] **`init` command exists** — if the project has per-repo configuration
 - [ ] **plugin.json has version** — if the project is a Claude Code plugin
 - [ ] **PostToolUse hook exists** — if the project uses MCP tools in Claude Code
 - [ ] **Beads initialized** — `.beads/` directory exists and is committed
