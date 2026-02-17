@@ -173,29 +173,26 @@ Issues must have:
 
 ## 7. Code Standards
 
-### Python projects (Biff, Quarry, LangLearn TTS)
+Language-specific standards live in dedicated documents under `standards/`. These are the canonical references — individual project CLAUDE.md files should reference them, not duplicate them.
 
-- Package manager: **uv**
-- Distribution: published to **PyPI** (`uv publish` or `uv tool publish`)
-- Linting: **ruff** (`ruff check .`, `ruff format .`)
-- Type checking: **mypy** (`mypy src/ tests/`)
-- Testing: **pytest**
-- Fully typed (`py.typed` marker)
-- MCP server framework: **FastMCP**
-- CLI framework: **typer** + **rich**
+| Language | Standards Document | Projects |
+|----------|-------------------|----------|
+| Python | [`standards/python.md`](standards/python.md) | Biff, Quarry, LangLearn TTS |
+| Node.js | [`standards/node.md`](standards/node.md) | Dungeon MCP server |
+| Swift | (planned) | Quarry Menu Bar, Koch Trainer |
+| Markdown-only | N/A — see Plugin Structure (§4) | PR/FAQ, Z Spec |
 
-### Swift projects (Quarry Menu Bar, Koch Trainer)
+### Quick reference (Python)
 
-- Formatting: **swiftformat**
-- Linting: **swiftlint**
-- Project generation: **XcodeGen** (from `project.yml`)
-- UI framework: **SwiftUI** with `@Observable`
-- Testing: **XCTest**
+uv, ruff, mypy, pyright, pytest, typer + rich, FastMCP. Published to PyPI. Quality gates pass before every commit. See [`standards/python.md`](standards/python.md) for full details.
 
-### JavaScript projects (Dungeon MCP server)
+### Quick reference (Node.js)
 
-- MCP SDK: **@modelcontextprotocol/sdk**
-- Schema validation: **zod**
+Node 20+, npm, `@modelcontextprotocol/sdk`, zod. ES modules (`.mjs`). See [`standards/node.md`](standards/node.md) for full details.
+
+### Quick reference (Swift)
+
+swiftformat, swiftlint, XcodeGen (from `project.yml`), SwiftUI with `@Observable`, XCTest.
 
 ### Markdown-only projects (PR/FAQ, Z Spec)
 
