@@ -55,7 +55,7 @@ LangLearn TTS is a pure **MCP server** (Python, FastMCP, stdio transport) with f
 
 ## Dungeon
 
-Dungeon is a text adventure engine where Claude is the game master. The entire game engine is a markdown file containing instructions that Claude follows — no code parses player input, no runtime evaluates game logic. Players type natural language commands and Claude interprets them, manages state, and narrates the outcome. Three bundled adventures ship with the plugin: a classic fantasy dungeon crawl, a UNIX system internals meta-adventure, and a gothic horror stealth game.
+Dungeon is a clickable prototype for a text adventure engine where Claude is the game master. The entire game engine is a markdown file containing instructions that Claude follows — no code parses player input, no runtime evaluates game logic. Players type natural language commands and Claude interprets them, manages state, and narrates the outcome. Three bundled adventures ship with the plugin: a classic fantasy dungeon crawl, a UNIX system internals meta-adventure, and a gothic horror stealth game. As a prototype, it demonstrates the concept — skills for behavior, MCP for persistence, hooks for presentation — but a real game would need deeper mechanics, better content, and likely a proper game engine backing it.
 
 Users install via `curl | bash`, which clones the repo into `~/.claude/plugins/local-plugins/plugins/dungeon`, installs Node.js MCP dependencies, registers the plugin, and creates a `/d` shorthand command. Once installed, `/dungeon` or `/d` starts or continues a game. The game state persists as YAML frontmatter in `.claude/dungeon.local.md`, so games survive across sessions.
 

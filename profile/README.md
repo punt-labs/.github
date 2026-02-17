@@ -20,6 +20,6 @@ Punt Labs builds software that keeps engineers in flow. Most of our tools work t
 
 ### Applications
 
-- [**Dungeon**](https://github.com/punt-labs/dungeon) `Claude Code` — Text adventure engine where Claude is the game master. No code runs, only prompts. Natural language commands, persistent state, and bundled adventure scripts.
+- [**Dungeon**](https://github.com/punt-labs/dungeon) `Claude Code` — Text adventure prototype where Claude is the game master. No code runs, only prompts. Demonstrates what's possible with skills, MCP state management, and natural language as the parser.
 - [**LangLearn TTS**](https://github.com/jmf-pobox/langlearn-tts-mcp) `CLI` `Claude Desktop` — Gives Claude the ability to speak. Pronounce words, generate audio flashcards, or run full language lessons with audio in 70+ languages. Works as a standalone CLI or an MCP server. Ships with 28 AI tutor personas across seven languages and four levels.
 - [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) `iOS` — Morse code trainer using the Koch method. Receive/send training, QSO simulation, spaced repetition, and vocabulary practice for amateur radio operators. Built from a formal [Z Spec](https://github.com/jmf-pobox/claude-z-spec-plugin) specification — an example of the design-to-code workflow our tools support.
