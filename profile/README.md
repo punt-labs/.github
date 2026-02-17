@@ -14,9 +14,9 @@ Punt Labs builds software that keeps engineers in flow. Most of our tools work t
 
 ### Development
 
-- [**Z Spec**](https://github.com/jmf-pobox/claude-z-spec-plugin) `Claude Code` — Create, validate, and test formal Z specifications for stateful systems. Guided setup for fuzz and ProB, with type-checking and model-checking.
 - [**Biff**](https://github.com/punt-labs/biff) `CLI` `Claude Code` — Team communication for engineers who never leave the terminal. Resurrects the BSD Unix communication vocabulary (`who`, `finger`, `write`, `plan`) as both CLI commands and MCP-native slash commands over a NATS relay. Humans and agents show up side by side.
 - [**Quarry**](https://github.com/jmf-pobox/quarry-mcp) `CLI` `Claude Code` `Claude Desktop` `macOS` — Local semantic search across your documents. Index PDFs, images, spreadsheets, source code, and 30+ formats. Search by meaning, not keywords. Works as a standalone CLI, an MCP server, or through the [menu bar app](https://github.com/jmf-pobox/quarry-menubar). Runs entirely offline.
+- [**Z Spec**](https://github.com/jmf-pobox/claude-z-spec-plugin) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB.
 
 ### Applications
 
