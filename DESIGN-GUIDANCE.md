@@ -176,6 +176,7 @@ Issues must have:
 ### Python projects (Biff, Quarry, LangLearn TTS)
 
 - Package manager: **uv**
+- Distribution: published to **PyPI** (`uv publish` or `uv tool publish`)
 - Linting: **ruff** (`ruff check .`, `ruff format .`)
 - Type checking: **mypy** (`mypy src/ tests/`)
 - Testing: **pytest**
