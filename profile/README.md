@@ -22,7 +22,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 
 ### Applications — Built with Our Tools
 
-- [**LangLearn TTS**](https://github.com/punt-labs/langlearn-tts) `CLI` `Claude Desktop` — Gives Claude the ability to speak. Pronounce words, generate audio flashcards, or run full language lessons with audio in 70+ languages. Works as a standalone CLI or an MCP server. Ships with 28 AI tutor personas across seven languages and four levels.
+- [**LangLearn**](https://github.com/punt-labs/langlearn) `CLI` `Claude Desktop` — Language learning platform that orchestrates TTS, image generation, and Anki deck creation into unified workflows. Composed of four packages: [types](https://github.com/punt-labs/langlearn-types) (shared interfaces), [TTS](https://github.com/punt-labs/langlearn-tts) (speech in 70+ languages with 28 AI tutor personas), [imagegen](https://github.com/punt-labs/langlearn-imagegen) (visual assets), and [Anki](https://github.com/punt-labs/langlearn-anki) (flashcard generation). Each works as a standalone CLI or MCP server.
 - [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) `iOS` — Morse code trainer using the Koch method. Receive/send training, QSO simulation, spaced repetition, and vocabulary practice for amateur radio operators. Built from a formal [Z Spec](https://github.com/punt-labs/z-spec) specification — an example of the design-to-code workflow our tools support.
 - [**Dungeon**](https://github.com/punt-labs/dungeon) `Claude Code` — Text adventure prototype where Claude is the game master. No code runs, only prompts. Demonstrates what's possible with skills, MCP state management, and natural language as the parser.
 
@@ -39,4 +39,8 @@ All Python packages are published under the `punt-` prefix on [PyPI](https://pyp
 | [`punt-kit`](https://pypi.org/project/punt-kit/) | `punt` | Project scaffolding and standards tooling |
 | [`punt-biff`](https://pypi.org/project/punt-biff/) | `biff` | Team communication CLI and MCP server |
 | [`punt-quarry`](https://pypi.org/project/punt-quarry/) | `quarry` | Local semantic search CLI and MCP server |
+| [`punt-langlearn`](https://pypi.org/project/punt-langlearn/) | `langlearn` | Language learning orchestrator CLI and MCP server |
 | [`punt-langlearn-tts`](https://pypi.org/project/punt-langlearn-tts/) | `langlearn-tts` | Language learning TTS CLI and MCP server |
+| [`punt-langlearn-anki`](https://pypi.org/project/punt-langlearn-anki/) | `langlearn-anki` | Anki deck generation for language learning |
+| [`punt-langlearn-imagegen`](https://pypi.org/project/punt-langlearn-imagegen/) | `langlearn-imagegen` | Image generation for language learning assets |
+| [`punt-langlearn-types`](https://pypi.org/project/punt-langlearn-types/) | `langlearn-types` | Shared interfaces for LangLearn tooling |
