@@ -20,7 +20,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 - [**Quarry**](https://github.com/punt-labs/quarry) `CLI` `Claude Code` `Claude Desktop` `macOS` — Local semantic search across your documents. Index PDFs, images, spreadsheets, source code, and 30+ formats. Search by meaning, not keywords. Works as a standalone CLI, an MCP server, or through the [menu bar app](https://github.com/punt-labs/quarry-menubar). Runs entirely offline.
 - [**Z Spec**](https://github.com/punt-labs/z-spec) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB.
 
-### Applications — Our Tooling Applied
+### Applications — Built with Our Tools
 
 - [**LangLearn TTS**](https://github.com/punt-labs/langlearn-tts) `CLI` `Claude Desktop` — Gives Claude the ability to speak. Pronounce words, generate audio flashcards, or run full language lessons with audio in 70+ languages. Works as a standalone CLI or an MCP server. Ships with 28 AI tutor personas across seven languages and four levels.
 - [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) `iOS` — Morse code trainer using the Koch method. Receive/send training, QSO simulation, spaced repetition, and vocabulary practice for amateur radio operators. Built from a formal [Z Spec](https://github.com/punt-labs/z-spec) specification — an example of the design-to-code workflow our tools support.
