@@ -35,7 +35,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 Install the [Punt Labs marketplace](https://github.com/punt-labs/claude-plugins) to get our Claude Code plugins:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/claude-plugins/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/punt-labs/claude-plugins/3ebea28/install.sh | sh
 ```
 
 Available plugins: **biff** (team communication), **dungeon** (text adventure), **punt** (standards enforcement).
