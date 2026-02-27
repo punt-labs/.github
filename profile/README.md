@@ -39,13 +39,6 @@ All CLIs and all Claude Code plugins in a single command:
 curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/2bf7472/install-all.sh | sh
 ```
 
-Or install just the [marketplace](https://github.com/punt-labs/claude-plugins) and pick individual plugins:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/claude-plugins/0f68917/install.sh | sh
-```
-
-Available plugins: **biff** (team communication), **dungeon** (text adventure), **prfaq** (product discovery), **punt** (standards enforcement), **quarry** (semantic search), **tts** (text-to-speech), **z-spec** (formal specifications).
 
 ## PyPI Packages
 
