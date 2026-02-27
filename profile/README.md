@@ -6,7 +6,7 @@ Grounding and refining agentic coding with formal methods.
 
 AI removes the time penalty from formal specifications, architecture decision records, and comprehensive tests. When the cost of rigor drops to near zero, the calculus changes. We build tools that bring that rigor to every stage of the development flow — product discovery, formal specification, code analysis, knowledge management, and team coordination. Most work as standalone CLIs and as Claude Code plugins. With some fun thrown in.
 
-Our design standards and project guide live in [punt-kit](https://github.com/punt-labs/punt-kit). Our [tenets](https://puntlabs.dev/tenets) document where we think agentic coding is heading.
+Our design standards and project guide live in [punt-kit](https://github.com/punt-labs/punt-kit). Our [tenets](https://punt-lab.com/tenets) document where we think agentic coding is heading.
 
 ## Projects
 
