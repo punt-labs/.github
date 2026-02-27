@@ -31,9 +31,9 @@ Built with our tools — examples of the workflow in practice.
 - [**Koch Trainer**](https://github.com/punt-labs/koch-trainer-swift) `iOS` — Morse code trainer using the Koch method. Built from a formal [Z Spec](https://github.com/punt-labs/z-spec) specification — the design-to-code workflow in action.
 - [**Dungeon**](https://github.com/punt-labs/dungeon) `Claude Code` — Text adventure where Claude is the game master. No code runs, only prompts. Fun is a feature.
 
-## Claude Code Plugins
+## Install Everything
 
-Install everything — all CLIs and all plugins — with a single command:
+All CLIs and all Claude Code plugins in a single command:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/2bf7472/install-all.sh | sh
