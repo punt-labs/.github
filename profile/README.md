@@ -33,7 +33,13 @@ Built with our tools — examples of the workflow in practice.
 
 ## Claude Code Plugins
 
-Install the [Punt Labs marketplace](https://github.com/punt-labs/claude-plugins) to get our Claude Code plugins:
+Install everything — all CLIs and all plugins — with a single command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/2bf7472/install-all.sh | sh
+```
+
+Or install just the [marketplace](https://github.com/punt-labs/claude-plugins) and pick individual plugins:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/punt-labs/claude-plugins/0f68917/install.sh | sh
