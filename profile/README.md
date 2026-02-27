@@ -39,7 +39,6 @@ All CLIs and all Claude Code plugins in a single command:
 curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/2bf7472/install-all.sh | sh
 ```
 
-
 ## PyPI Packages
 
 All Python packages are published under the `punt-` prefix on [PyPI](https://pypi.org):
