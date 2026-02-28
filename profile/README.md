@@ -13,8 +13,8 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 ### Grounding & Formal Methods
 
 - [**PR/FAQ**](https://github.com/punt-labs/prfaq) `Claude Code` — Structured product discovery using Amazon's Working Backwards process. Eight specialized agents, simulated review meetings, compiled PDF output. Grounding for *what* to build.
-- [**Z Spec**](https://github.com/punt-labs/z-spec) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB. Grounding for *how* to build it.
 - **Use Cases** — Guided use-case specification using Jacobson-Cockburn Use-Case Foundation v1.1. In development.
+- [**Z Spec**](https://github.com/punt-labs/z-spec) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB. Grounding for *how* to build it.
 - **Refactory** — Code refactoring guided by formal analysis. In development.
 
 ### Developer Tools
