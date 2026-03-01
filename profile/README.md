@@ -37,7 +37,7 @@ Built with our tools — examples of the workflow in practice.
 All CLIs and all Claude Code plugins in a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/e97de30/install-all.sh | sh
+curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/7fea7b7/install-all.sh | sh
 ```
 
 ## PyPI Packages
