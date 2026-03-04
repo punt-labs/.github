@@ -50,6 +50,6 @@ All Python packages are published under the `punt-` prefix on [PyPI](https://pyp
 | [`punt-kit`](https://pypi.org/project/punt-kit/) | `punt` | Project scaffolding and standards tooling |
 | [`punt-biff`](https://pypi.org/project/punt-biff/) | `biff` | Team communication CLI and MCP server |
 | [`punt-quarry`](https://pypi.org/project/punt-quarry/) | `quarry` | Local semantic search CLI and MCP server |
-| [`punt-tts`](https://pypi.org/project/punt-tts/) | `tts` | Vox — text-to-speech engine CLI and MCP server |
+| [`punt-vox`](https://pypi.org/project/punt-vox/) | `vox` | Text-to-speech engine CLI and MCP server |
 | [`punt-langlearn-tts`](https://pypi.org/project/punt-langlearn-tts/) | `langlearn-tts` | Language learning TTS CLI and MCP server |
 | [`punt-langlearn-types`](https://pypi.org/project/punt-langlearn-types/) | `langlearn-types` | Shared interfaces for LangLearn tooling |
