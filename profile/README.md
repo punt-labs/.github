@@ -15,11 +15,11 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 - [**PR/FAQ**](https://github.com/punt-labs/prfaq) `Claude Code` — Structured product discovery using Amazon's Working Backwards process. Eight specialized agents, simulated review meetings, compiled PDF output. Grounding for *what* to build.
 - **Use Cases** — Guided use-case specification using Jacobson-Cockburn Use-Case Foundation v1.1. In development.
 - [**Z Spec**](https://github.com/punt-labs/z-spec) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB. Grounding for *how* to build it.
+- **Refactory** — Deterministic, behavior-preserving refactoring. The AI decides what needs restructuring, Refactory executes on a parsed program model with formally defined preconditions. Built on Opdyke's original definition. In development.
 
 ### Building Blocks
 
 - [**Quarry**](https://github.com/punt-labs/quarry) `CLI` `Claude Code` `Claude Desktop` `macOS` — Local semantic search across your documents. 30+ formats, AST-level code parsing, offline. Works as a standalone CLI, an MCP server, or through the [menu bar app](https://github.com/punt-labs/quarry-menubar).
-- **Refactory** — Deterministic, behavior-preserving refactoring. The AI decides what needs restructuring, Refactory executes on a parsed program model with formally defined preconditions. In development.
 - [**Biff**](https://github.com/punt-labs/biff) `CLI` `Claude Code` — Team communication resurrecting BSD Unix vocabulary (`who`, `finger`, `write`, `plan`) over a NATS relay. Humans and agents show up side by side. Serious coordination, retro charm.
 - [**Vox**](https://github.com/punt-labs/vox) `CLI` `Claude Code` — Text-to-speech engine with multi-provider support (ElevenLabs, OpenAI, AWS Polly). Spoken notifications, chimes, and arbitrary speech synthesis. Opt-in only.
 - **Persona** — Character, voice, and teaching philosophy for every domain tool. Grounded in Mollick & Mollick's seven pedagogical roles. The pattern already works in langlearn-tts's 28 named instructors. In development.
