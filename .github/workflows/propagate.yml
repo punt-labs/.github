@@ -1,0 +1,78 @@
+name: Propagate Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "Source repo (e.g. punt-labs/punt-kit)"
+        required: true
+        type: string
+      tag:
+        description: "Git tag (e.g. v0.3.0)"
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  propagate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    env:
+      INPUT_REPO: ${{ inputs.repo }}
+      INPUT_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update install-all.sh SHA in profile README
+        run: |
+          README="profile/README.md"
+          if [ ! -f "$README" ]; then
+            echo "No profile/README.md found"
+            exit 1
+          fi
+
+          # Only punt-kit releases affect the install-all.sh URL
+          if [ "$INPUT_REPO" != "punt-labs/punt-kit" ]; then
+            echo "Not a punt-kit release — nothing to update"
+            exit 0
+          fi
+
+          # Get the commit SHA for the tag (handle annotated tags)
+          TAG_INFO=$(gh api "repos/$INPUT_REPO/git/ref/tags/$INPUT_TAG" --jq '.object.sha + " " + .object.type' 2>/dev/null || echo "")
+          if [ -z "$TAG_INFO" ]; then
+            echo "Could not resolve tag info for $INPUT_TAG in $INPUT_REPO — skipping"
+            exit 0
+          fi
+          TAG_SHA=$(echo "$TAG_INFO" | cut -d' ' -f1)
+          TAG_TYPE=$(echo "$TAG_INFO" | cut -d' ' -f2)
+
+          if [ "$TAG_TYPE" = "tag" ]; then
+            TAG_SHA=$(gh api "repos/$INPUT_REPO/git/tags/$TAG_SHA" --jq '.object.sha' 2>/dev/null || echo "")
+            if [ -z "$TAG_SHA" ]; then
+              echo "Could not dereference annotated tag $INPUT_TAG — skipping"
+              exit 0
+            fi
+          fi
+          SHORT_SHA="${TAG_SHA:0:7}"
+
+          # Replace the SHA in the install-all.sh curl URL
+          # Pattern: punt-labs/punt-kit/<SHA>/install-all.sh
+          sed -i "s|punt-labs/punt-kit/[a-f0-9]\{7,40\}/install-all.sh|punt-labs/punt-kit/${SHORT_SHA}/install-all.sh|g" "$README"
+
+          if git diff --quiet "$README"; then
+            echo "No README changes needed"
+          else
+            git add "$README"
+            git commit -m "chore: update install-all.sh SHA to $INPUT_TAG"
+            git push origin main
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
