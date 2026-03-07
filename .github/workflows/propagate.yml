@@ -20,6 +20,7 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: write
+      pull-requests: write
     env:
       INPUT_REPO: ${{ inputs.repo }}
       INPUT_TAG: ${{ inputs.tag }}
@@ -72,7 +73,28 @@ jobs:
           else
             git add "$README"
             git commit -m "chore: update install-all.sh SHA to $INPUT_TAG"
-            git push origin main
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create PR
+        run: |
+          if git diff --quiet HEAD origin/main; then
+            echo "Nothing to push"
+            exit 0
+          fi
+
+          BRANCH="propagate/punt-kit-${INPUT_TAG}"
+          git checkout -b "$BRANCH"
+          git push origin "$BRANCH"
+
+          PR_URL=$(gh pr create \
+            --title "chore: update install-all.sh SHA to $INPUT_TAG" \
+            --body "Automated propagation from ${INPUT_REPO} ${INPUT_TAG}." \
+            --head "$BRANCH" \
+            --base main)
+          echo "Created PR: $PR_URL"
+
+          gh pr merge "$PR_URL" --auto --squash
         env:
           GH_TOKEN: ${{ github.token }}
