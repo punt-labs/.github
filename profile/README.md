@@ -16,6 +16,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 - **Use Cases** — Guided use-case specification using Jacobson-Cockburn Use-Case Foundation v1.1. In development.
 - [**Z Spec**](https://github.com/punt-labs/z-spec) `Claude Code` — Formal Z specifications for stateful systems. Extract specs from existing code (`code2model`) or generate code from specs (`model2code`). Type-check with fuzz, animate and model-check with ProB. Grounding for *how* to build it.
 - **Refactory** — Deterministic, behavior-preserving refactoring. The AI decides what needs restructuring, Refactory executes on a parsed program model with formally defined preconditions. Built on Opdyke's original definition. In development.
+- [**ReasonTrace**](https://github.com/punt-labs/reason-trace) — Session recordings as engineering assets. Captures every AI coding session as a dual-stream recording (terminal for humans, structured events for agents), extracts reasoning decisions, and runs automated review agents against project standards and formal specs. Agents reviewing agents. In development.
 
 ### Building Blocks
 
