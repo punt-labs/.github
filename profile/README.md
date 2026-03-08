@@ -23,7 +23,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 - [**Biff**](https://github.com/punt-labs/biff) `CLI` `Claude Code` — Team communication resurrecting BSD Unix vocabulary (`who`, `finger`, `write`, `plan`) over a NATS relay. Humans and agents show up side by side. Serious coordination, retro charm.
 - [**Vox**](https://github.com/punt-labs/vox) `CLI` `Claude Code` — Text-to-speech engine with multi-provider support (ElevenLabs, OpenAI, AWS Polly). Spoken notifications, chimes, and arbitrary speech synthesis. Opt-in only.
 - **Persona** — Character, voice, and teaching philosophy for every domain tool. Grounded in Mollick & Mollick's seven pedagogical roles. The pattern already works in langlearn-tts's 28 named instructors. In development.
-- **Lux** — Image and diagram generation with multi-provider support. The visual counterpart to Vox. In development.
+- [**Lux**](https://github.com/punt-labs/lux) `CLI` `Claude Code` — A visual output surface for AI agents. ImGui display server connected by Unix socket IPC — agents send JSON element trees, the display renders them at 60fps. 22 element kinds, interactive controls, incremental updates, render functions with consent.
 - **Tally** — Token consumption, model usage, and spend tracking across sessions and projects. In development.
 - [**punt-kit**](https://github.com/punt-labs/punt-kit) `CLI` `Python` — Org standards, shared tooling, and project scaffolding. The `punt` CLI.
 
