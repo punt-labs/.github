@@ -33,6 +33,11 @@ jobs:
       INPUT_SHA: ${{ inputs.sha }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          # Use PROPAGATE_TOKEN so git push authenticates with the PAT.
+          # Pushes from GITHUB_TOKEN suppress workflow triggers, preventing
+          # CI from running on the PR.
+          token: ${{ secrets.PROPAGATE_TOKEN }}
 
       - name: Configure git
         run: |
@@ -108,6 +113,9 @@ jobs:
             BRANCH="propagate/punt-kit-${INPUT_SHA:0:7}"
           fi
           git checkout -b "$BRANCH"
+
+          # Delete stale remote branch from a previous failed run (if any)
+          git push origin --delete "$BRANCH" 2>/dev/null || true
           git push origin "$BRANCH"
 
           PR_URL=$(gh pr create \
@@ -119,4 +127,4 @@ jobs:
 
           gh pr merge "$PR_URL" --auto --squash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PROPAGATE_TOKEN }}
