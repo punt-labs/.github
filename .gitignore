@@ -1,1 +1,17 @@
+# Claude Code
 .claude/settings.local.json
+
+# Beads daemon runtime
+.beads/.local_version
+.beads/.sync.lock
+.beads/beads.db
+.beads/beads.db-shm
+.beads/beads.db-wal
+.beads/beads.left.jsonl
+.beads/beads.left.meta.json
+.beads/daemon.lock
+.beads/daemon.log
+.beads/daemon.pid
+.beads/last-touched
+.beads/sync_base.jsonl
+.beads/bd.sock
