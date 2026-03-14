@@ -21,6 +21,7 @@ Our design standards and project guide live in [punt-kit](https://github.com/pun
 ### Building Blocks
 
 - [**Quarry**](https://github.com/punt-labs/quarry) `CLI` `Claude Code` `Claude Desktop` `macOS` — Local semantic search across your documents. 30+ formats, AST-level code parsing, offline. Works as a standalone CLI, an MCP server, or through the [menu bar app](https://github.com/punt-labs/quarry-menubar).
+- [**Beadle**](https://github.com/punt-labs/beadle) `MCP` `Go` — Email communication over Proton Bridge with a four-level PGP trust model. Written in Go.
 - [**Biff**](https://github.com/punt-labs/biff) `CLI` `Claude Code` — Team communication resurrecting BSD Unix vocabulary (`who`, `finger`, `write`, `plan`) over a NATS relay. Humans and agents show up side by side. Serious coordination, retro charm.
 - [**Vox**](https://github.com/punt-labs/vox) `CLI` `Claude Code` — Text-to-speech engine with multi-provider support (ElevenLabs, OpenAI, AWS Polly). Spoken notifications, chimes, and arbitrary speech synthesis. Opt-in only.
 - **Persona** — Character, voice, and teaching philosophy for every domain tool. Grounded in Mollick & Mollick's seven pedagogical roles. The pattern already works in langlearn-tts's 28 named instructors. In development.
@@ -42,7 +43,7 @@ Real projects where we discover what works and what doesn't.
 All CLIs and all Claude Code plugins in a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/93fc3a1/install-all.sh | sh
+curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/ef757ce/install-all.sh | sh
 ```
 
 ## PyPI Packages
