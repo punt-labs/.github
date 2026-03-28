@@ -15,3 +15,4 @@
 .beads/last-touched
 .beads/sync_base.jsonl
 .beads/bd.sock
+.envrc.local
