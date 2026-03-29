@@ -1,6 +1,6 @@
 #!/bin/sh
 # Install all Punt Labs tools and Claude Code plugins.
-# Usage: curl -fsSL https://raw.githubusercontent.com/punt-labs/punt-kit/<SHA>/install-all.sh | sh
+# Usage: curl -fsSL https://raw.githubusercontent.com/punt-labs/.github/<SHA>/install-all.sh | sh
 #
 # This is a thin orchestrator. Each CLI tool has its own installer that handles
 # pre-flight checks, uv setup, and plugin registration independently. This
