@@ -54,7 +54,7 @@ banner "beadle"
 curl -fsSL "$GH/beadle/c104e15/install.sh" | sh
 
 banner "biff"
-curl -fsSL "$GH/biff/2b17553/install.sh" | sh
+curl -fsSL "$GH/biff/f2587a9/install.sh" | sh
 
 banner "quarry"
 curl -fsSL "$GH/quarry/1c4c3c7/install.sh" | sh
