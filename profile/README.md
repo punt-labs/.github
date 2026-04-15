@@ -43,7 +43,7 @@ Real projects where we discover what works and what doesn't.
 All CLIs and all Claude Code plugins in a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/.github/598de38/install-all.sh | sh
+curl -fsSL https://raw.githubusercontent.com/punt-labs/.github/2767799/install-all.sh | sh
 ```
 
 ## PyPI Packages
