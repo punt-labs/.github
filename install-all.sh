@@ -63,7 +63,7 @@ banner "vox"
 curl -fsSL "$GH/vox/a011b23/install.sh" | sh
 
 banner "lux"
-curl -fsSL "$GH/lux/ace3f62/install.sh" | sh
+curl -fsSL "$GH/lux/f803d67/install.sh" | sh
 
 banner "ethos"
 curl -fsSL "$GH/ethos/c5222ef/install.sh" | sh
