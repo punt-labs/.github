@@ -60,7 +60,7 @@ banner "quarry"
 curl -fsSL "$GH/quarry/6f90f11/install.sh" | sh
 
 banner "vox"
-curl -fsSL "$GH/vox/14e382f/install.sh" | sh
+curl -fsSL "$GH/vox/d99c8dd/install.sh" | sh
 
 banner "lux"
 curl -fsSL "$GH/lux/92d9172/install.sh" | sh
