@@ -17,9 +17,12 @@ jobs:
 
       - name: shellcheck
         uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # v2.0.0
+        env:
+          # -x -P SCRIPTDIR follows `source "$(dirname "$0")/lib/safety.sh"`
+          # relative to each script, matching the documented local gate.
+          SHELLCHECK_OPTS: -x -P SCRIPTDIR
         with:
           scandir: .bin
-          severity: error
 
   docs:
     runs-on: ubuntu-latest
