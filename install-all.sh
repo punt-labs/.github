@@ -66,7 +66,7 @@ banner "lux"
 curl -fsSL "$GH/lux/00c88f6/install.sh" | sh
 
 banner "ethos"
-curl -fsSL "$GH/ethos/c5764fb/install.sh" | sh
+curl -fsSL "$GH/ethos/9aaa157/install.sh" | sh
 
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
