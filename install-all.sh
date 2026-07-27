@@ -68,6 +68,9 @@ curl -fsSL "$GH/lux/00c88f6/install.sh" | sh
 banner "ethos"
 curl -fsSL "$GH/ethos/c826b65/install.sh" | sh
 
+banner "z-spec"
+curl -fsSL "$GH/z-spec/c3adc5c/install.sh" | sh
+
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
 banner "Plugins"
@@ -89,7 +92,7 @@ if ! ssh -n -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeo
   fi
 fi
 
-for plugin in prfaq dungeon z-spec; do
+for plugin in prfaq dungeon; do
   info "Installing $plugin plugin..."
   claude plugin uninstall "$plugin@punt-labs" < /dev/null 2>/dev/null || true
   if claude plugin install "$plugin@punt-labs" --scope user < /dev/null 2>/dev/null; then
