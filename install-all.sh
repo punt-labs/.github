@@ -107,6 +107,6 @@ cleanup_https_rewrite
 # --- Done ---
 
 printf '\n%b%bAll Punt Labs tools are installed!%b\n\n' "$GREEN" "$BOLD" "$NC"
-printf 'CLIs:    beadle, biff, ethos, lux, punt, quarry, vox\n'
+printf 'CLIs:    beadle, biff, ethos, lux, punt, quarry, vox, z-spec\n'
 printf 'Plugins: biff, dungeon, ethos, lux, prfaq, punt, quarry, vox, z-spec\n\n'
 printf 'Restart Claude Code twice to activate all plugins.\n\n'
