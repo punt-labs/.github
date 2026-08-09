@@ -69,7 +69,7 @@ banner "ethos"
 curl -fsSL "$GH/ethos/8b04ad0/install.sh" | sh
 
 banner "z-spec"
-curl -fsSL "$GH/z-spec/49e9e1b/install.sh" | sh
+curl -fsSL "$GH/z-spec/e1cd577/install.sh" | sh
 
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
