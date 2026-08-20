@@ -42,34 +42,34 @@ fi
 # --- Step 1: Marketplace ---
 
 banner "Marketplace"
-curl -fsSL "$GH/claude-plugins/2a7e501/install.sh" | sh
+curl -fsSL "$GH/claude-plugins/aa5a34d/install.sh" | sh
 
 # --- Step 2: CLI tools ---
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
 
 banner "punt-kit"
-curl -fsSL "$GH/punt-kit/0e0da40/install.sh" | sh
+curl -fsSL "$GH/punt-kit/1100c96/install.sh" | sh
 
 banner "beadle"
-curl -fsSL "$GH/beadle/15fcf89/install.sh" | sh
+curl -fsSL "$GH/beadle/2bf86b2/install.sh" | sh
 
 banner "biff"
-curl -fsSL "$GH/biff/78545b9/install.sh" | sh
+curl -fsSL "$GH/biff/fb35c9d/install.sh" | sh
 
 banner "quarry"
-curl -fsSL "$GH/quarry/21dc421/install.sh" | sh
+curl -fsSL "$GH/quarry/900d3a8/install.sh" | sh
 
 banner "vox"
 curl -fsSL "$GH/vox/2ed73ee/install.sh" | sh
 
 banner "lux"
-curl -fsSL "$GH/lux/627a97d8/install.sh" | sh
+curl -fsSL "$GH/lux/c6a817d6/install.sh" | sh
 
 banner "ethos"
 curl -fsSL "$GH/ethos/142f51d/install.sh" | sh
 
 banner "z-spec"
-curl -fsSL "$GH/z-spec/e1cd577/install.sh" | sh
+curl -fsSL "$GH/z-spec/56e362b/install.sh" | sh
 
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
