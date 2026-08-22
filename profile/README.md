@@ -51,7 +51,7 @@ Exploratory bets on where programming is going.
 All CLIs and all Claude Code plugins in a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/punt-labs/.github/fafdf38/install-all.sh | sh
+curl -fsSL https://raw.githubusercontent.com/punt-labs/.github/6b2a476/install-all.sh | sh
 ```
 
 ## PyPI Packages
