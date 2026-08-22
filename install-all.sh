@@ -57,7 +57,7 @@ banner "biff"
 curl -fsSL "$GH/biff/813ae18/install.sh" | sh
 
 banner "quarry"
-curl -fsSL "$GH/quarry/87f7463/install.sh" | sh
+curl -fsSL "$GH/quarry/fd274d3/install.sh" | sh
 
 banner "vox"
 curl -fsSL "$GH/vox/67b5ac4/install.sh" | sh
