@@ -42,7 +42,7 @@ fi
 # --- Step 1: Marketplace ---
 
 banner "Marketplace"
-curl -fsSL "$GH/claude-plugins/763afbf/install.sh" | sh
+curl -fsSL "$GH/claude-plugins/d33c93b/install.sh" | sh
 
 # --- Step 2: CLI tools ---
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
