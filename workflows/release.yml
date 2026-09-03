@@ -20,7 +20,4 @@ jobs:
           python-version: "3.13"
       - run: uv build
       - run: uvx twine check dist/*
-      - run: uvx twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
