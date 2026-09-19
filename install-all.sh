@@ -66,7 +66,7 @@ banner "lux"
 curl -fsSL "$GH/lux/0e40539a/install.sh" | sh
 
 banner "ethos"
-curl -fsSL "$GH/ethos/d013870/install.sh" | sh
+curl -fsSL "$GH/ethos/3a15b55/install.sh" | sh
 
 banner "z-spec"
 curl -fsSL "$GH/z-spec/1c4294b/install.sh" | sh
