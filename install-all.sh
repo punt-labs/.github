@@ -42,7 +42,7 @@ fi
 # --- Step 1: Marketplace ---
 
 banner "Marketplace"
-curl -fsSL "$GH/claude-plugins/d33c93b/install.sh" | sh
+curl -fsSL "$GH/claude-plugins/04c4ca5/install.sh" | sh
 
 # --- Step 2: CLI tools ---
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
@@ -54,22 +54,22 @@ banner "beadle"
 curl -fsSL "$GH/beadle/4cc7f6b/install.sh" | sh
 
 banner "biff"
-curl -fsSL "$GH/biff/e1a6594/install.sh" | sh
+curl -fsSL "$GH/biff/6dd95cc/install.sh" | sh
 
 banner "quarry"
 curl -fsSL "$GH/quarry/5530609/install.sh" | sh
 
 banner "vox"
-curl -fsSL "$GH/vox/ebaf2f7/install.sh" | sh
+curl -fsSL "$GH/vox/a1b27ab/install.sh" | sh
 
 banner "lux"
-curl -fsSL "$GH/lux/0e40539a/install.sh" | sh
+curl -fsSL "$GH/lux/cf07ed7/install.sh" | sh
 
 banner "ethos"
 curl -fsSL "$GH/ethos/47397f8/install.sh" | sh
 
 banner "z-spec"
-curl -fsSL "$GH/z-spec/1c4294b/install.sh" | sh
+curl -fsSL "$GH/z-spec/2d50236/install.sh" | sh
 
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
