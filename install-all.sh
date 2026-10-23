@@ -4,7 +4,8 @@
 #
 # This is a thin orchestrator. Each CLI tool has its own installer that handles
 # pre-flight checks, uv setup, and plugin registration independently. This
-# script curls them in sequence and adds the pure-plugin installs that have no
+# script downloads each one and runs it in sequence, failing if a download or
+# an installer fails, and adds the pure-plugin installs that have no
 # standalone installer. Child installer URLs are pinned to auditable SHAs.
 set -eu
 
@@ -22,6 +23,32 @@ fail()   { printf '  %b✗%b %s\n' "$YELLOW" "$NC" "$1"; exit 1; }
 banner() { printf '\n%b── %s ──%b\n\n' "$BOLD" "$1" "$NC"; }
 
 GH="https://raw.githubusercontent.com/punt-labs"
+
+# Download a child installer to a temp file, then run it. Piping curl into sh
+# under `set -eu` (no pipefail in POSIX sh) turns a failed download into an
+# empty script that exits 0, so the orchestrator would report success. Two
+# steps make each failure observable. The installer reads /dev/null so it
+# cannot consume this script's own stdin when we are run as `curl ... | sh`.
+# The temp file is removed on every path; the INT/TERM trap is local to the
+# call and reset before returning, so it never competes with the later
+# cleanup_https_rewrite trap.
+run_installer() {
+  url="$1"
+  tmp="$(mktemp)" || fail "mktemp failed; cannot run installer: $url"
+  trap 'rm -f "$tmp"; exit 130' INT TERM
+  if ! curl -fsSL "$url" -o "$tmp"; then
+    rm -f "$tmp"
+    trap - INT TERM
+    fail "Download failed: $url"
+  fi
+  if ! sh "$tmp" < /dev/null; then
+    rm -f "$tmp"
+    trap - INT TERM
+    fail "Installer failed: $url"
+  fi
+  rm -f "$tmp"
+  trap - INT TERM
+}
 
 # --- Pre-flight ---
 
@@ -42,37 +69,37 @@ fi
 # --- Step 1: Marketplace ---
 
 banner "Marketplace"
-curl -fsSL "$GH/claude-plugins/04c4ca5/install.sh" | sh
+run_installer "$GH/claude-plugins/04c4ca5/install.sh"
 
 # --- Step 2: CLI tools ---
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
 
 banner "punt-kit"
-curl -fsSL "$GH/punt-kit/27de21c/install.sh" | sh
+run_installer "$GH/punt-kit/27de21c/install.sh"
 
 banner "beadle"
-curl -fsSL "$GH/beadle/4cc7f6b/install.sh" | sh
+run_installer "$GH/beadle/4cc7f6b/install.sh"
 
 banner "biff"
-curl -fsSL "$GH/biff/6dd95cc/install.sh" | sh
+run_installer "$GH/biff/6dd95cc/install.sh"
 
 banner "quarry"
-curl -fsSL "$GH/quarry/5530609/install.sh" | sh
+run_installer "$GH/quarry/5530609/install.sh"
 
 banner "vox"
-curl -fsSL "$GH/vox/a1b27ab/install.sh" | sh
+run_installer "$GH/vox/a1b27ab/install.sh"
 
 banner "lux"
-curl -fsSL "$GH/lux/cf07ed7/install.sh" | sh
+run_installer "$GH/lux/cf07ed7/install.sh"
 
 banner "ethos"
-curl -fsSL "$GH/ethos/47397f8/install.sh" | sh
+run_installer "$GH/ethos/47397f8/install.sh"
 
 banner "z-spec"
-curl -fsSL "$GH/z-spec/2d50236/install.sh" | sh
+run_installer "$GH/z-spec/2d50236/install.sh"
 
 banner "mcp-proxy"
-curl -fsSL "$GH/mcp-proxy/1817fa3/install.sh" | sh
+run_installer "$GH/mcp-proxy/1817fa3/install.sh"
 
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
