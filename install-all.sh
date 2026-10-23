@@ -71,6 +71,9 @@ curl -fsSL "$GH/ethos/47397f8/install.sh" | sh
 banner "z-spec"
 curl -fsSL "$GH/z-spec/2d50236/install.sh" | sh
 
+banner "mcp-proxy"
+curl -fsSL "$GH/mcp-proxy/1817fa3/install.sh" | sh
+
 # --- Step 3: Pure plugins (no CLI, marketplace-only) ---
 
 banner "Plugins"
@@ -107,6 +110,6 @@ cleanup_https_rewrite
 # --- Done ---
 
 printf '\n%b%bAll Punt Labs tools are installed!%b\n\n' "$GREEN" "$BOLD" "$NC"
-printf 'CLIs:    beadle, biff, ethos, lux, punt, quarry, vox, z-spec\n'
+printf 'CLIs:    beadle, biff, ethos, lux, mcp-proxy, punt, quarry, vox, z-spec\n'
 printf 'Plugins: biff, dungeon, ethos, lux, prfaq, punt, quarry, vox, z-spec\n\n'
 printf 'Restart Claude Code twice to activate all plugins.\n\n'
