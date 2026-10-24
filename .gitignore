@@ -183,12 +183,8 @@ timeline.xctimeline
 # everything from here down; everything above is regenerated from the canonical
 # template.
 
-# The workspace meta-repo (punt-labs/punt-labs) is checked out at this same
-# path (../.github relative to the child repos, as `punt release` requires),
-# so its root-level workflows/ CI files live here physically. They belong to
-# that repo; keep them invisible to this one. This repo's own Actions live in
-# .github/workflows/.
-/workflows/
+# tracked here already; ignoring it hides it from the workspace repo that shares this path
+/.claude/settings.json
 
 # Beads daemon runtime not covered by the canonical block
 .beads/beads.left.jsonl
