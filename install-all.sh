@@ -75,7 +75,7 @@ run_installer "$GH/claude-plugins/04c4ca5/install.sh"
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
 
 banner "punt-kit"
-run_installer "$GH/punt-kit/27de21c/install.sh"
+run_installer "$GH/punt-kit/3d1a6fb/install.sh"
 
 banner "beadle"
 run_installer "$GH/beadle/4cc7f6b/install.sh"
