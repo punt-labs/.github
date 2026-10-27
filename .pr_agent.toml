@@ -1,0 +1,36 @@
+# Qodo v2 review config from punt-kit pr_agent.toml template. One review on open, no per-push
+# re-review, only High findings inline (they become blocking threads).
+# Only bot-authored PRs are skipped; no title or label lets an author opt out.
+[github_app]
+ignore_bot_pr = true
+pr_commands = ["/agentic_describe", "/agentic_review"]
+handle_push_trigger = false
+
+[review_agent]
+enable_incremental_review = true
+# comments_routing below is authoritative; the threshold restates it (High only inline).
+inline_comments_severity_threshold = 3
+issues_user_guidelines = """
+.github is the Punt Labs org repo: the github.com/punt-labs profile (profile/README.md), org-default community files (CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, issue and PR templates), the install-all.sh installer, and canonical GitHub Actions workflow files under workflows/ (CI, Docs, Lint, Release, Test, Biff CI Notifications) that sibling repos copy.
+install-all.sh runs as curl | sh on user machines and curls each tool's installer at a pinned commit SHA.
+Report every finding in this one pass; do not hold findings back for a later pass.
+Flag only defects reachable by a real caller of the changed code: logic errors, None paths, security, API contract breaks, concurrency, resource leaks.
+Do not flag hypothetical environments (exotic env vars such as CDPATH or GIT_TRACE, control bytes in paths, tests run as root).
+Do not flag what CI enforces: markdownlint on every Markdown file in the Docs workflow (.github/workflows/docs.yml).
+Do not flag lines the PR did not change.
+Do not suggest replacing a pinned action commit SHA or installer SHA with a tag or branch; SHA pins are required.
+"""
+compliance_user_guidelines = """
+Apply code rules only: correctness, typing, error handling, security, and the coding standards for the changed files.
+Do not grade PR titles, PR descriptions, commit messages, or CHANGELOG wording.
+Do not grade agent process rules from CLAUDE.md, AGENTS.md, or WORKFLOW.md (missions, beads, review cycles, delegation).
+"""
+smart_router_extra_instructions = """
+High risk: workflows/ and .github/workflows/ (job permissions, secrets such as PYPI_TOKEN and BIFF_RELAY_TOKEN, workflow_run triggers, action SHA pins) and install-all.sh (installer URLs and their pinned SHAs).
+Low risk: profile/README.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, and .github/ISSUE_TEMPLATE/ and PULL_REQUEST_TEMPLATE.md.
+"""
+
+[review_agent.comments_routing]
+action_required = "both"
+remediation_recommended = "summary"
+informational = "drop"
