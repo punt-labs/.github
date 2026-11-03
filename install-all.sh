@@ -90,7 +90,7 @@ banner "vox"
 run_installer "$GH/vox/a1b27ab/install.sh"
 
 banner "lux"
-run_installer "$GH/lux/cf07ed7/install.sh"
+run_installer "$GH/lux/78c46e79/install.sh"
 
 banner "ethos"
 run_installer "$GH/ethos/ee8a9f1/install.sh"
