@@ -87,7 +87,7 @@ banner "quarry"
 run_installer "$GH/quarry/c223536/install.sh"
 
 banner "vox"
-run_installer "$GH/vox/dd6acb6/install.sh"
+run_installer "$GH/vox/ce8d4a5/install.sh"
 
 banner "lux"
 run_installer "$GH/lux/175b81bc/install.sh"
