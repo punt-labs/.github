@@ -78,7 +78,7 @@ banner "punt-kit"
 run_installer "$GH/punt-kit/0740213/install.sh"
 
 banner "beadle"
-run_installer "$GH/beadle/4cc7f6b/install.sh"
+run_installer "$GH/beadle/d89e9e1/install.sh"
 
 banner "biff"
 run_installer "$GH/biff/6dd95cc/install.sh"
