@@ -12,6 +12,7 @@ permissions:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
@@ -26,6 +27,7 @@ jobs:
 
   docs:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
@@ -33,3 +35,140 @@ jobs:
         uses: DavidAnson/markdownlint-cli2-action@ce4853d43830c74c1753b39f3cf40f71c2031eb9 # v23.0.0
         with:
           globs: "CLAUDE.md"
+
+  test-model-provider:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # ubuntu-latest ships bash, python3, GNU coreutils, and make already;
+      # the suite stubs pass/curl on PATH and isolates HOME, so no network
+      # access or extra tooling is required.
+      - name: run model-provider test suite
+        run: make test-model-provider
+
+  test-status-all:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # ubuntu-latest ships bash, python3, GNU coreutils, and make already;
+      # the suite builds its own fixture workspace under .tmp/ and isolates
+      # HOME/GIT_CONFIG_GLOBAL per fixture repo, so no network access or
+      # extra tooling is required.
+      - name: run status-all test suite
+        run: make test-status-all
+
+  test-audit-install-shas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The suite stubs gh on PATH and serves a fixture tree, so no network
+      # access, token, or extra tooling is required.
+      - name: run audit-install-shas test suite
+        run: make test-audit-install-shas
+
+  test-install-all-local:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The suite builds a fixture workspace of stub installers and stubs
+      # claude/ssh on PATH with an isolated HOME, so no network access,
+      # real plugin registry, or extra tooling is required.
+      - name: run install-all-local test suite
+        run: make test-install-all-local
+
+  test-review-metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The make targets run ruff, pytest, and mypy through `uv run --no-project
+      # --with <tool>==<version>` (versions pinned in the Makefile), so uv is
+      # the one extra tool, and it is pinned here so a uv release cannot
+      # change resolution. The suite reads recorded GraphQL fixtures and
+      # stubs subprocess.run, so no gh, qodo, token, or network access to
+      # GitHub is needed. The workspace has no lockfile for setup-uv's cache
+      # to key on, so its cache stays off.
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.5"
+          python-version: "3.13"
+          enable-cache: false
+
+      - name: lint review-metrics
+        run: make lint-review-metrics
+
+      - name: run review-metrics test suite
+        run: make test-review-metrics
+
+      - name: type-check review-metrics
+        run: make type-review-metrics
+
+  test-workspace-bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The suite copies the script into fixture workspaces, stubs gh on PATH,
+      # and clones from local bare repos, so no network access, token, or
+      # extra tooling is required.
+      - name: run workspace-bootstrap test suite
+        run: make test-workspace-bootstrap
+
+  test-git-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The suite stubs ethos, pass, and gpg on a restricted PATH with an
+      # isolated HOME, so only bash and jq are needed. GitHub's ubuntu-latest
+      # image ships jq; the guard installs it if a future image drops it.
+      - name: ensure jq
+        run: command -v jq >/dev/null 2>&1 || sudo apt-get install -y --no-install-recommends jq
+
+      - name: run git-identity test suite
+        run: make test-git-identity
+
+  test-envrc-template:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # The suite sources the template under env -i with a stub pass and a
+      # scratch store, so only bash and GNU find/coreutils are needed.
+      - name: run envrc-template test suite
+        run: make test-envrc-template
+
+  test-envrc-compliance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # Same pinned uv as test-review-metrics; the suite exercises the check
+      # functions against temp files, so no real .envrc or network is read.
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.5"
+          python-version: "3.12"
+          enable-cache: false
+
+      - name: lint envrc-compliance tests
+        run: make lint-envrc-compliance
+
+      - name: run envrc-compliance tests
+        run: make test-envrc-compliance
+
+      - name: type-check envrc-compliance tests
+        run: make type-envrc-compliance
