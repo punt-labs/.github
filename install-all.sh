@@ -122,7 +122,13 @@ if ! ssh -n -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeo
   fi
 fi
 
-for plugin in prfaq dungeon; do
+# Pure plugins (marketplace-only, no CLI), space-separated for POSIX sh.
+# Add a plugin name here to install it after the CLI tools.
+PURE_PLUGINS="prfaq"
+# shellcheck disable=SC2043  # one plugin today; the loop stays so adding to
+# PURE_PLUGINS above needs no structural change, and word-splitting the list
+# is the POSIX-sh way to iterate it.
+for plugin in $PURE_PLUGINS; do
   info "Installing $plugin plugin..."
   claude plugin uninstall "$plugin@punt-labs" < /dev/null 2>/dev/null || true
   if claude plugin install "$plugin@punt-labs" --scope user < /dev/null 2>/dev/null; then
@@ -138,5 +144,5 @@ cleanup_https_rewrite
 
 printf '\n%b%bAll Punt Labs tools are installed!%b\n\n' "$GREEN" "$BOLD" "$NC"
 printf 'CLIs:    beadle, biff, ethos, lux, mcp-proxy, punt, quarry, vox, z-spec\n'
-printf 'Plugins: biff, dungeon, ethos, lux, prfaq, punt, quarry, vox, z-spec\n\n'
+printf 'Plugins: biff, ethos, lux, prfaq, punt, quarry, vox, z-spec\n\n'
 printf 'Restart Claude Code twice to activate all plugins.\n\n'
