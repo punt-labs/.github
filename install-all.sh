@@ -81,7 +81,7 @@ banner "beadle"
 run_installer "$GH/beadle/355710a/install.sh"
 
 banner "biff"
-run_installer "$GH/biff/aca7ca5/install.sh"
+run_installer "$GH/biff/a2b0f7e/install.sh"
 
 banner "quarry"
 run_installer "$GH/quarry/c223536/install.sh"
