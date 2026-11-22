@@ -75,7 +75,7 @@ run_installer "$GH/claude-plugins/04c4ca5/install.sh"
 # Each installer handles its own pre-flight (Python, uv, SSH fallback).
 
 banner "punt-kit"
-run_installer "$GH/punt-kit/8e2d51e/install.sh"
+run_installer "$GH/punt-kit/0740213/install.sh"
 
 banner "beadle"
 run_installer "$GH/beadle/355710a/install.sh"
@@ -96,7 +96,7 @@ banner "ethos"
 run_installer "$GH/ethos/cb596af/install.sh"
 
 banner "z-spec"
-run_installer "$GH/z-spec/2d50236/install.sh"
+run_installer "$GH/z-spec/fb966b4/install.sh"
 
 banner "mcp-proxy"
 run_installer "$GH/mcp-proxy/1817fa3/install.sh"
