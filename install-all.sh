@@ -93,7 +93,8 @@ banner "lux"
 run_installer "$GH/lux/175b81bc/install.sh"
 
 banner "ethos"
-run_installer "$GH/ethos/235729d/install.sh"
+# v5.2.4 is tagged at ecc5fea.
+run_installer "$GH/ethos/ecc5fea/install.sh"
 
 banner "z-spec"
 run_installer "$GH/z-spec/2d50236/install.sh"
