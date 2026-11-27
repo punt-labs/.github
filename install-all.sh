@@ -93,7 +93,7 @@ banner "lux"
 run_installer "$GH/lux/175b81bc/install.sh"
 
 banner "ethos"
-run_installer "$GH/ethos/235729d/install.sh"
+run_installer "$GH/ethos/920b2ce/install.sh"
 
 banner "z-spec"
 run_installer "$GH/z-spec/2d50236/install.sh"
